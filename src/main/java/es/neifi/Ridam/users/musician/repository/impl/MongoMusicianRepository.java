@@ -15,12 +15,12 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 
 @Repository
-public class MongoUserRepository implements UserRepository {
+public class MongoMusicianRepository implements UserRepository {
 
     @Autowired
     private final MongoOperations mongoOperations;
 
-    public MongoUserRepository(MongoOperations mongoOperations) {
+    public MongoMusicianRepository(MongoOperations mongoOperations) {
         this.mongoOperations = mongoOperations;
     }
 
@@ -30,6 +30,14 @@ public class MongoUserRepository implements UserRepository {
         return Optional.ofNullable(
                 mongoOperations.findOne(new Query(Criteria.where("_id").is(id)), Musician.class));
 
+    }
+
+    @Override
+    public Optional<User> getByEmail(String email) {
+        return Optional.ofNullable(
+                mongoOperations
+                        .findOne(
+                                new Query(Criteria.where("email").is(email)), Musician.class));
     }
 
     @Override

@@ -3,7 +3,7 @@ package es.neifi.Ridam.users.musician.business.service;
 import com.google.inject.internal.util.ImmutableList;
 import es.neifi.Ridam.users.User;
 import es.neifi.Ridam.users.musician.model.Musician;
-import es.neifi.Ridam.users.musician.repository.impl.MongoUserRepository;
+import es.neifi.Ridam.users.musician.repository.impl.MongoMusicianRepository;
 import es.neifi.Ridam.users.services.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
 class UserServiceImplTest {
 
     @Mock
-    private MongoUserRepository mongoUserRepository;
+    private MongoMusicianRepository mongoUserRepository;
 
     private UserServiceImpl userServiceImpl;
 

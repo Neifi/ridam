@@ -11,10 +11,11 @@ import java.util.UUID;
 @Repository
 public interface UserRepository {
 
-    public Optional<User> getById(UUID id);
-    public List<User> getAll();
-    public Optional<User> save(User user);
-    public Optional<User> update(User user);
-    public int delete(UUID id);
+    Optional<User> getById(UUID id);
+    Optional<User> getByEmail(String email);
+    List<User> getAll();
+    Optional<User> save(User user);
+    Optional<User> update(User user);
+    int delete(UUID id);
 
 }
