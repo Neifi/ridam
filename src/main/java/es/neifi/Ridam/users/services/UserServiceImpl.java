@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> getUserByUsername(String email) {
 
-        return Optional.empty();
+        return repository.getByEmail(email);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> updateUser(User musician){
+    public int updateUser(User musician){
         return repository.update(musician);
     }
 

@@ -51,7 +51,7 @@ public class VenueController {
         if (venueToFind.isPresent()) {
             return venueToFind
                     .map(venue -> ResponseEntity
-                            .ok(venueService.updateUser(venue).get()))
+                            .ok(venueService.getUserById(id).get()))
                     .orElseGet(() -> ResponseEntity.badRequest().build());
 
         }

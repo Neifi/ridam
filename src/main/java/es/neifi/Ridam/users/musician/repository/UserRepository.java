@@ -15,7 +15,7 @@ public interface UserRepository {
     Optional<User> getByEmail(String email);
     List<User> getAll();
     Optional<User> save(User user);
-    Optional<User> update(User user);
+    int update(User user);
     int delete(UUID id);
 
 }

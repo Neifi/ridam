@@ -48,7 +48,8 @@ public class JwtProvider {
                 .setExpiration(tokenExpirationDate)
                 .claim("fullname", user.getUsername())
                 .signWith(secret,SignatureAlgorithm.HS512)
-                .claim("roles", user.getRol().toString()).compact();
+                //.claim("roles", user.getRol().toString())
+                .compact();
     }
 
 

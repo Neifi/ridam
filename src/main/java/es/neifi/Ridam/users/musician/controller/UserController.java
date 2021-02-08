@@ -58,9 +58,9 @@ public class UserController {
 
     @PutMapping("/user")
     public ResponseEntity<BasicUserInfo> updateUser(@RequestBody Musician musician){
-        Optional<User> result = this.userServiceImpl.updateUser(musician);
-        if(result.isEmpty()) return ResponseEntity.notFound().build();
-
+        int updateResult = this.userServiceImpl.updateUser(musician);
+        if(updateResult > 0) return ResponseEntity.notFound().build();
+        Optional<User> result = this.userServiceImpl.getUserById(musician.get_id());
         return ResponseEntity.ok(userDTOConverter.basicUserInfoConverter(result.get()));
     }
 

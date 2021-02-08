@@ -127,16 +127,16 @@ class UserServiceImplTest {
         musicianOne.set_id(_id);
         musicianOne.setEmail("joan_fonts@gmail.com");
 
-        given(mongoUserRepository.update(musicianOne)).willReturn(Optional.of(musicianOne));
+        given(mongoUserRepository.update(musicianOne)).willReturn(1);
 
         ArgumentCaptor<Musician> captor = ArgumentCaptor.forClass(Musician.class);
-        Optional<User> expectedUser = userServiceImpl.updateUser(musicianOne);
+        int updateResult = userServiceImpl.updateUser(musicianOne);
 
         verify(mongoUserRepository).update(captor.capture());
         Musician musician = captor.getValue();
 
-        assertTrue(expectedUser.isPresent());
-        assertEquals(musician,expectedUser.get());
+        assertTrue(updateResult > 1);
+        //assertEquals(musician,expectedUser.get());
 
 
     }

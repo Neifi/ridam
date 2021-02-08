@@ -18,7 +18,7 @@ public interface UserService {
 
     public Optional<User> saveUser(User user);
 
-    public Optional<User> updateUser(User user);
+    public int updateUser(User user);
 
     public int deleteById(UUID id);
 

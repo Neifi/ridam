@@ -51,10 +51,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().exceptionHandling().authenticationEntryPoint(authenticationEntryPoint).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                .antMatchers(HttpMethod.GET, "/**")
-                .permitAll().antMatchers(HttpMethod.GET, "/").permitAll();
+                .antMatchers(HttpMethod.POST, "/**").authenticated()
+                .antMatchers(HttpMethod.GET, "/**").authenticated()
+                .antMatchers(HttpMethod.PUT, "/**").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/**").authenticated()
+                .antMatchers(HttpMethod.PATCH, "/**").authenticated()
+                .antMatchers(HttpMethod.HEAD, "/**").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/**").authenticated();
 
-                //.antMatchers(HttpMethod.GET, "/**").hasAnyRole("ADMIN", "USER").anyRequest().authenticated();
+
+
+
+
+
+        //.antMatchers(HttpMethod.GET, "/**").hasAnyRole("ADMIN", "USER").anyRequest().authenticated();
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
 
     }
